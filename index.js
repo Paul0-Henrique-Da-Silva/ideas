@@ -73,6 +73,6 @@ app.use('/', authRoutes)
 
 app.get('/', IdeaController.showIdeas)
 
-conn.sync({force: true}).then(() => app.listen(3000)
+conn.sync().then(() => app.listen(3000)
 ).catch((Error) => console.log(Error))
 

@@ -39,3 +39,20 @@
     color:rgb(243, 78, 7);
 }
 
+.container {
+    min-height: 60vh;
+    padding: 2em;
+}
+
+footer {
+    height: 150px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-top: rgb(243, 78, 7);
+
+}
+
+footer span {
+    font-weight: bold;
+}

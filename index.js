@@ -14,7 +14,10 @@ const User = require('./models/User')
 
 
 // import rourtes
-const IdeasRoutes = require('./routes/ideasRoutes')
+const ideasRoutes = require('./routes/ideasRoutes')
+
+// Import Controller
+const IdeaController = require('./controllers/IdeaController')
 
 // Templete engine
 app.engine('handlebars', exphbs())
@@ -64,7 +67,8 @@ app.use((request, response, next) => {
 })
 
 //Routes
-app.use('/ideas', IdeasRoutes)
+app.use('/ideas', ideasRoutes)
+app.get('/', IdeaController.showIdeas)
 
 conn.sync({force: true}).then(() => app.listen(3000)
 ).catch((Error) => console.log(Error))

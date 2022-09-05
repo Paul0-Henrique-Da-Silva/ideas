@@ -43,6 +43,64 @@
     min-height: 60vh;
     padding: 2em;
 }
+/* formulario */
+
+.auth-container {
+    max-width: 450px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;    
+}
+
+.auth-container h2 {
+    margin-bottom: 1em;
+    color: #fff;
+    border-left: 4px solid rgb(243, 78, 7);
+    padding: .3em;
+    width: 100px;
+}
+
+.auth-container a {
+    color: rgb(243, 78, 7);
+}
+
+.form-control {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 1em;
+}
+
+.form-control label {
+    font-weight: bold;
+    margin-bottom: 0.5em;
+}
+
+.form-control input, .form-control textarea {
+    padding: 7px;
+    border-radius: 3px;
+    border: 1px solid rgb(243, 78, 7);
+}
+
+form input[type='submit'],
+.btn {
+    background-color: transparent;
+    color: rgb(243, 78, 7);
+    border: 2px solid rgb(243, 78, 7);
+    padding: .5em 1.2em; /*V, H*/
+    margin-bottom: 1em;
+    font-size: 1em;
+    font-weight: bold;
+    border-radius: 5px;
+    cursor: pointer;
+    text-decoration: none;
+    transition: 0.5s;
+}
+
+form input[type='submit']:hover,
+.btn:hover {
+    background-color: rgb(243, 78, 7);
+    color: #fff;
+}
 
 footer {
     height: 150px;

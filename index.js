@@ -15,6 +15,7 @@ const User = require('./models/User')
 
 // import rourtes
 const ideasRoutes = require('./routes/ideasRoutes')
+const authRoutes = require('./routes/authRoutes')
 
 // Import Controller
 const IdeaController = require('./controllers/IdeaController')
@@ -68,6 +69,8 @@ app.use((request, response, next) => {
 
 //Routes
 app.use('/ideas', ideasRoutes)
+app.use('/', authRoutes)
+
 app.get('/', IdeaController.showIdeas)
 
 conn.sync({force: true}).then(() => app.listen(3000)

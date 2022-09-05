@@ -8,6 +8,14 @@ const conn = require('./db/conn')
 
 const app = express()
 
+// models
+const Idea = require('./models/Idea')
+const User = require('./models/User')
+
+
+// import rourtes
+const IdeasRoutes = require('./routes/ideasRoutes')
+
 // Templete engine
 app.engine('handlebars', exphbs())
 app.set('view engine', 'handlebars')
@@ -49,13 +57,15 @@ app.use(flash())
 app.use(express.static('public'))
 
 // configurar a sesseion para res
-app.use((resquest, response, next) =>{
-    if(resquest.session.userid){
+app.use((request, response, next) => {
+    if(request.session.userid){
         response.locals.session = request.session }
     next()    
 })
 
+//Routes
+app.use('/ideas', IdeasRoutes)
 
-conn.sync().then(() => app.listen(3000)
+conn.sync({force: true}).then(() => app.listen(3000)
 ).catch((Error) => console.log(Error))
 

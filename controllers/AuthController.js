@@ -14,7 +14,7 @@ module.exports = class  AuthControler {
     static async registerPost(request, response) {
         const { name, email, password, confirmpassword } = request.body
          
-        //checar se usúario existe
+        //checar se usúario /email existe
         const checkIfUserExists = await User.findOne({where: {email: email}})
         if(checkIfUserExists) { 
             request.flash('message', 'O e-mail já está em uso!')
@@ -43,5 +43,10 @@ module.exports = class  AuthControler {
         }
             
 
+    }
+
+    static logout(request, response) {
+        request.session.destroy()
+        response.redirect('/login')
     }
 }

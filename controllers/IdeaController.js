@@ -8,4 +8,8 @@ module.exports = class IdeaController {
     static async dashboard(_request, response) {
         response.render('ideas/dashboard')
     }
+
+    static createIdea(resquest, response) {
+        response.render('ideas/create')
+    }
 }

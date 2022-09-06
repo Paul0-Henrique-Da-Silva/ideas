@@ -44,4 +44,18 @@ module.exports = class IdeaController {
             console.log(error)
         }
     } 
+
+    static async removeIdea(request, response) {
+        const id = request.body.id
+        const UserId = request.session.userid
+        try {
+            await Idea.destroy({where: { id: id, UserId: UserId}})
+            request.flash('message', 'Ideia removido com sucesso')
+            request.session.save(() => {
+                response.redirect('/ideas/dashboard')
+            })
+        } catch (error) {
+            console.log(error)
+        }
+    }
 }

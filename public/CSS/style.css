@@ -114,6 +114,29 @@ form input[type='submit']:hover,
     color: #fff;
 }
 
+/* crete */
+
+.idea-form-container a {
+    color: rgb(243, 78, 7);
+
+}
+
+.idea-form-container a:hover {
+    color: rgb(243, 78, 7);
+}
+
+.idea-form-container h1 {
+    margin: 1em 0; /* V x H*/
+    color: #fff;
+    border-left: 4px solid rgb(243, 78, 7);
+    padding: 0.3em;
+}
+
+.idea-form-container form {
+    max-width: 30%;
+    margin-top: 1.5em;
+}
+
 footer {
     height: 150px;
     display: flex;

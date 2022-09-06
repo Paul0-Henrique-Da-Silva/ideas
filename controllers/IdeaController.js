@@ -9,7 +9,25 @@ module.exports = class IdeaController {
         response.render('ideas/dashboard')
     }
 
-    static createIdea(resquest, response) {
+    static createIdea(_request, response) {
         response.render('ideas/create')
     }
+
+    static async createIdeaSave(request, response) {
+        const idea = { 
+            title: request.body.title,
+            UserId: request.session.userid
+        }
+
+        await Idea.create(idea)
+
+        try {
+            request.flash('message', 'Pensamento criado com sucesso!')
+            request.session.save(() => {
+                response.redirect('/ideas/dashboard')
+            })} 
+        catch (error) {
+            console.log(error)
+        }
+    } 
 }

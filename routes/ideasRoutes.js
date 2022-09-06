@@ -7,5 +7,6 @@ const checkAuth = require('../helpers/auth').checkAuth
 router.get('/', IdeaController.showIdeas)
 router.get('/dashboard',checkAuth, IdeaController.dashboard)
 router.get('/add', checkAuth, IdeaController.createIdea)
+router.post('/add', checkAuth, IdeaController.createIdeaSave)
 
 module.exports = router

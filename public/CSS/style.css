@@ -182,6 +182,9 @@ form input[type='submit']:hover,
     margin: 0 0.5em;
   }  
 
+  .dashboard a {
+    color: rgb(243, 78, 7);
+  }
 footer {
     height: 150px;
     display: flex;

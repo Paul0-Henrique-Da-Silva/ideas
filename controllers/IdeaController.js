@@ -19,8 +19,14 @@ module.exports = class IdeaController {
         
         const ideas = user.Ideas.map((value) => value.dataValues)
         // console.log(ideas)
-         
-        response.render('ideas/dashboard', { ideas })
+        
+        let emptyIdeas = false
+
+        if(ideas.length === 0){
+            emptyIdeas = true
+        }
+
+        response.render('ideas/dashboard', { ideas, emptyIdeas })
     }
 
     static createIdea(_request, response) {

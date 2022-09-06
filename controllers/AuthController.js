@@ -16,7 +16,7 @@ module.exports = class  AuthControler {
             response.render('auth/login')
             return
         }
-        //se as senha dão math
+        //se as senha combina com senha cadastrada no banco
         const passwordMatch = bcrypt.compareSync(password, user.password)
         if(!passwordMatch) {
             request.flash('message', 'Senha inválida')

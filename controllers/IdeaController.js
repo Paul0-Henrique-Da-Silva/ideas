@@ -5,4 +5,7 @@ module.exports = class IdeaController {
     static async showIdeas( _request, response) {
        response.render('ideas/home')
     }
+    static async dashboard(_request, response) {
+        response.render('ideas/dashboard')
+    }
 }

@@ -2,10 +2,10 @@
     <a href="/ideas/dashboard">Voltar</a>
     <h1>Editando uma Ideia:</h1>
     <form action="/ideas/edit" method="POST">
-        <input type="hidden" name="id" value="{{idea.id}}">
+        <input type="hidden" name="id" value="{{ideas.id}}">
         <div class="form-control">
             <label for="title">Ideia:</label>
-            <input type="text" name="title" placeholder="Digite a sua ideia.." value="{{idea.title}}">
+            <input type="text" name="title" placeholder="Digite a sua ideia.." value="{{ideas.title}}">
         </div>
         <input type="submit" value="Editar Ideia">
     </form>

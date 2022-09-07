@@ -73,4 +73,20 @@ module.exports = class IdeaController {
 
         response.render('ideas/edit', { ideas })
     }
+
+    static async updateIdeaSave(request, response) {
+        
+        const id = request.body.id
+        const ideas = { title: request.body.title }
+        try {
+            await Idea.update(ideas, {where: {id: id}})
+            console.log(Idea)
+            request.flash('message', 'Ideia atualizada!')
+            request.session.save(() => {
+                response.redirect('/ideas/dashboard')
+            })
+        } catch (error) {
+            console.log(error)
+        }
+    }
 }

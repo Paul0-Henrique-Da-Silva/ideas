@@ -6,7 +6,7 @@ const User = require('./User')
 
 const Idea = db.define("Idea", {
     title: {
-        type: DataTypes.STRING,
+        type: DataTypes.TEXT,
         allowNull: false,
     }  
 })

@@ -5,13 +5,20 @@ const { Op }  = require('sequelize')
 
 module.exports = class IdeaController {
     static async showIdeas( request, response) {
+        let order = 'DESC'
+        if(request.query.order === 'old') {
+         order = 'ASC'
+        } else { 
+         order = 'DESC'
+        }
        let search = ''
        if(request.query.search) { search = request.query.search }
 
        const ideasData = await Idea.findAll(
         {
         include: User,
-        where: { title: {[Op.like]: `%${search}%`}}
+        where: { title: {[Op.like]: `%${search}%`}},
+        order: [['createdAt', order]]
         })
          
        const ideas = ideasData.map((value) => value.get({ plain:true}))

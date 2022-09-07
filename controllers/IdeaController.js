@@ -3,8 +3,14 @@ const User = require('../models/User')
 
 module.exports = class IdeaController {
     static async showIdeas( _request, response) {
-       response.render('ideas/home')
+       const ideasData = await Idea.findAll(
+        {include: User}
+       ) 
+       const ideas = ideasData.map((value) => value.get({ plain:true}))
+       console.log(ideas)
+       response.render('ideas/home', { ideas })
     }
+
     static async dashboard(request, response) {
         const userId = request.session.userid
 

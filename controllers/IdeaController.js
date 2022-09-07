@@ -64,4 +64,13 @@ module.exports = class IdeaController {
             console.log(error)
         }
     }
+
+    static async updateIdea(request, response) {
+        const id = request.params.id
+
+        const ideas = await Idea.findOne({where: {id: id}, raw: true})
+        // console.log(ideas)
+
+        response.render('ideas/edit', { ideas })
+    }
 }

@@ -9,5 +9,6 @@ router.get('/dashboard',checkAuth, IdeaController.dashboard)
 router.get('/add', checkAuth, IdeaController.createIdea)
 router.post('/add', checkAuth, IdeaController.createIdeaSave)
 router.post('/remove', checkAuth, IdeaController.removeIdea)
+router.get('/edit/:id', checkAuth, IdeaController.updateIdea)
 
 module.exports = router

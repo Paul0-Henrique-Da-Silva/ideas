@@ -1,14 +1,29 @@
 const Idea = require('../models/Idea')
 const User = require('../models/User')
 
+const { Op }  = require('sequelize')
+
 module.exports = class IdeaController {
-    static async showIdeas( _request, response) {
+    static async showIdeas( request, response) {
+       let search = ''
+       if(request.query.search) { search = request.query.search }
+
        const ideasData = await Idea.findAll(
-        {include: User}
-       ) 
+        {
+        include: User,
+        where: { title: {[Op.like]: `%${search}%`}}
+        })
+         
        const ideas = ideasData.map((value) => value.get({ plain:true}))
-       console.log(ideas)
-       response.render('ideas/home', { ideas })
+    //    console.log(ideas)
+       let ideasQty = ideas.length
+       
+       //handlebars n reconhece 0 como falso
+       if( ideasQty === 0) {
+        ideasQty = false
+       }
+
+       response.render('ideas/home', { ideas, search, ideasQty })
     }
 
     static async dashboard(request, response) {
